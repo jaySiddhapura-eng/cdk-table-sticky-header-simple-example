@@ -1,0 +1,96 @@
+<div style="width: 100%; height: 100px; background-color: lightgreen"></div>
+
+<div style="overflow-x: auto; width: 100%">
+  <!-- <table cdk-table [dataSource]="dataSource" style="overflow: hidden"> -->
+  <table cdk-table [dataSource]="dataSource" appScroll>
+    <!-- Position Column -->
+    <ng-container cdkColumnDef="position">
+      <th
+        cdk-header-cell
+        appStickyHeader
+        *cdkHeaderCellDef
+        style="background-color: lightblue"
+      >
+        No.
+      </th>
+      <td
+        cdk-cell
+        *cdkCellDef="let element"
+        style="background-color: lightblue"
+      >
+        <app-custom-preview [value]="element.position"> </app-custom-preview>
+      </td>
+    </ng-container>
+
+    <!-- Name Column -->
+    <ng-container cdkColumnDef="name">
+      <th
+        cdk-header-cell
+        appStickyHeader
+        *cdkHeaderCellDef
+        style="background-color: lightyellow"
+      >
+        Name
+      </th>
+      <td cdk-cell *cdkCellDef="let element">
+        <app-custom-preview [value]="element.name"> </app-custom-preview>
+      </td>
+    </ng-container>
+
+    <!-- Weight Column -->
+    <ng-container cdkColumnDef="weight">
+      <th
+        cdk-header-cell
+        appStickyHeader
+        *cdkHeaderCellDef
+        style="background-color: lightyellow"
+      >
+        Weight
+      </th>
+      <td cdk-cell *cdkCellDef="let element">
+        <app-custom-preview [value]="element.weight"> </app-custom-preview>
+      </td>
+    </ng-container>
+
+    <!-- Symbol Column -->
+    <ng-container cdkColumnDef="symbol">
+      <th
+        cdk-header-cell
+        appStickyHeader
+        *cdkHeaderCellDef
+        style="background-color: lightyellow"
+      >
+        Symbol
+      </th>
+      <td cdk-cell *cdkCellDef="let element">
+        <app-custom-preview [value]="element.symbol"> </app-custom-preview>
+      </td>
+    </ng-container>
+
+    <!-- Symbol Column -->
+    <ng-container
+      cdkColumnDef="{{symbol}}"
+      *ngFor="let symbol of symbols; let i = index"
+    >
+      <th
+        cdk-header-cell
+        appStickyHeader
+        *cdkHeaderCellDef
+        style="background-color: lightyellow"
+      >
+        Symbol
+      </th>
+      <td cdk-cell *cdkCellDef="let element">
+        <app-custom-preview [value]="symbol"> </app-custom-preview>
+      </td>
+    </ng-container>
+
+    <tr cdk-header-row *cdkHeaderRowDef="displayedColumns; sticky: true"></tr>
+    <tr cdk-row *cdkRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+</div>
+
+<div style="width: 100%; height: 100px; background-color: lightgreen"></div>
+<!-- Copyright 2021 Google LLC. All Rights Reserved.
+    Use of this source code is governed by an MIT-style license that
+    can be found in the LICENSE file at http://angular.io/license -->
